@@ -1,0 +1,32 @@
+{% extends "store/base.html" %}
+{% block title %}Cart - Shop{% endblock %}
+{% block content %}
+<h2>Your cart</h2>
+{% if items %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th class="text-end">Qty</th>
+        <th class="text-end">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for it in items %}
+        <tr>
+          <td>{{ it.product.name }}</td>
+          <td class="text-end">{{ it.qty }}</td>
+          <td class="text-end">{{ it.subtotal }} ₹</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td class="text-end"><strong>Total</strong></td>
+        <td class="text-end"><strong>{{ total }} ₹</strong></td>
+      </tr>
+    </tbody>
+  </table>
+{% else %}
+  <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}
